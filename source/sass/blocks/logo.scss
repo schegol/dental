@@ -1,0 +1,45 @@
+.logo {
+    &--header {
+        width: 36px;
+        height: 36px;
+    }
+
+    &--footer {
+        width: 210px;
+        height: 51px;
+    }
+}
+
+.logo__img {
+    &--mobile {
+        display: block;
+    }
+
+    &--desktop {
+        display: none;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .logo {
+        &--header {
+            width: 230px;
+            height: 56px;
+        }
+
+        &--footer {
+            width: 259px;
+            height: 63px;
+        }
+    }
+
+    .logo__img {
+        &--mobile {
+            display: none;
+        }
+    
+        &--desktop {
+            display: block;
+        }
+    }
+}

@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
 
 @media (min-width: $tablet-width) {
@@ -13,8 +13,14 @@
 
 @media (min-width: $desktop-width) {
     .site-container {
-        width: 1920px;
+        padding: 0 40px;
+    }
+}
+
+@media (min-width: $big-desktop-width) {
+    .site-container {
+        width: 1410px;
         max-width: 100%;
-        padding: 0 50px;
+        padding: 0;
     }
 }

@@ -1,0 +1,329 @@
+.footer {
+    padding: 50px 0;
+    background-color: $accent-color-dark;
+}
+
+.footer__contacts-start {
+    @include dflex(nowrap, column, flex-start, flex-start);
+    margin-bottom: 30px;
+}
+
+.footer__logo-link {
+    display: block;
+    margin: 0 0 20px;
+}
+
+.footer__copyright {
+    margin: 0 0 15px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.footer__links-list {
+    @include list-reset;
+    @include dflex(nowrap, column, flex-start, flex-start);
+    margin-bottom: 50px;
+}
+
+.footer__links-item {
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+
+.footer__link {
+    @include transition(color);
+    // @include transition-delay;
+    color: #fff;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $footer-hover-color;
+        outline: none;
+    }
+}
+
+.footer__messengers-list {
+    @include list-reset;
+    @include dflex(nowrap, column, flex-start, flex-start);
+    position: relative;
+    width: 100%;
+
+    &::before {
+        @include abs-pseudo;
+        top: -25px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        opacity: .06;
+        border-top: 1px solid #FFF;
+    }
+}
+
+.footer__messengers-item {
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+
+.footer__messengers-link {
+    @include transition(color);
+    position: relative;
+    padding-left: 32px;
+    color: rgba(255,255,255,1);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    background-image: $gradient;
+    background-clip: text;
+    text-fill-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: rgba(255,255,255,0);
+        outline: none;
+    }
+
+    &::before {
+        @include abs-center-y;
+        width: 20px;
+        height: 20px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    &--whatsapp {
+        &::before {
+            background-image: url("../img/icon-messengers-wa.svg");
+        }
+    }
+    
+    &--telegram {
+        &::before {
+            background-image: url("../img/icon-messengers-tg.svg");
+        }
+    }
+}
+
+.footer__menus-block {
+    @include dflex(nowrap, column, flex-start, flex-start);
+    margin-bottom: 30px;
+}
+
+.footer__menus {
+    @include dflex(nowrap, row, space-between, flex-start);
+    width: 100%;
+}
+
+.footer__menu {
+    flex-basis: 50%;
+}
+
+.footer__menu-heading {
+    margin: 0 0 15px;
+    color: $accent-color-light;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.footer__menu-list {
+    @include list-reset;
+}
+
+.footer__menu-item {
+    &:not(:last-child) {
+        margin-bottom: 7px;
+    }
+}
+
+.footer__menu-link {
+    @include transition(color);
+    font-weight: 500;
+    color: #fff;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $footer-hover-color;
+        outline: none;
+    }
+}
+
+.footer__vision-link {
+    @include transition(color);
+    position: relative;
+    max-width: 195px;
+    margin-top: 50px;
+    padding-left: 67px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $footer-hover-color;
+        outline: none;
+    }
+
+    &::before {
+        @include abs-center-y;
+        @include background("../img/icon-vision.svg");
+        width: 51px;
+        height: 51px;
+    }
+
+    &::after {
+        @include abs-pseudo;
+        top: -25px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        opacity: .06;
+        border-top: 1px solid #FFF;
+    }
+}
+
+.footer__contacts-list {
+    @include dflex(nowrap, column, flex-start, flex-start);
+    @include list-reset;
+    margin-bottom: 30px;
+}
+
+.footer__contacts-item {
+    position: relative;
+    padding-left: 46px;
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    &::before {
+        @include abs-pseudo;
+        @include background-inline;
+        top: 0;
+        left: 0;
+        width: 27px;
+        height: 27px;
+    }
+
+    &--phone {
+        &::before {
+            background-image: url("../img/icon-footer-contacts-phone.svg");
+        }
+    }
+
+    &--email {
+        &::before {
+            background-image: url("../img/icon-footer-contacts-email.svg");
+        }
+    }
+
+    &--address {
+        &::before {
+            background-image: url("../img/icon-footer-contacts-address.svg");
+        }
+    }
+}
+
+.footer__contacts-link-heading {
+    margin: 0 0 2px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    color: $accent-color-light;
+}
+
+.footer__contacts-item a,
+.footer__contacts-item p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.footer__contacts-item a {
+    @include transition(color);
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $footer-hover-color;
+        outline: none;
+    }
+}
+
+.footer__contacts-item--phone a {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.footer__social {
+    @include dflex(nowrap, row, flex-start, center);
+}
+
+.footer__social-heading {
+    color: $accent-color-light;
+    margin-right: 20px;
+}
+
+.footer__social-list {
+    @include dflex(nowrap, row, flex-start, center);
+    @include list-reset;
+}
+
+.footer__social-item {
+    &:not(:last-child) {
+        margin-right: 10px;
+    }
+}
+
+.footer__social-link {
+    display: block;
+    width: 32px;
+    height: 32px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.footer__social-link .footer__social-icon-bg path,
+.footer__social-link .footer__social-icon-bg circle {
+    @include transition(fill);
+    fill: transparent;
+}
+
+.footer__social-link:hover .footer__social-icon-bg path,
+.footer__social-link:focus .footer__social-icon-bg path,
+.footer__social-link:hover .footer__social-icon-bg circle,
+.footer__social-link:focus .footer__social-icon-bg circle {
+    fill: #fff;
+}
+
+.footer__social-link path {
+    @include transition(fill);
+    fill: #fff;
+}
+
+.footer__social-link--instagram:hover path,
+.footer__social-link--instagram:focus path {
+    fill: #E60039;
+}
+
+.footer__social-link--vk:hover path,
+.footer__social-link--vk:focus path {
+    fill: #0077FF;
+}
+
+.footer__social-link--dzen:hover path,
+.footer__social-link--dzen:focus path {
+    fill: #5B5B5B;
+}

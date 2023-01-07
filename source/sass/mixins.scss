@@ -63,7 +63,11 @@
 }
 
 @mixin transition ($prop: all) {
-    transition: $prop .2s linear;
+    transition: $prop .3s linear;
+}
+
+@mixin transition-delay {
+    transition-delay: $transition-delay;
 }
 
 @mixin object-fit {
@@ -71,4 +75,17 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+@mixin background($url) {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url($url);
+}
+
+@mixin background-inline {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
