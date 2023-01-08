@@ -89,3 +89,15 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+@mixin gradient-text {
+    background-image: $gradient;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+@mixin gradient-text-light {
+    background-image: $gradient-simple;
+    background-clip: text;
+    text-fill-color: transparent;
+}

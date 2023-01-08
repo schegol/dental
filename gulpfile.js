@@ -29,10 +29,10 @@ gulp.task("css", function () {
     .pipe(gulp.dest("build/css"));
 });
 
-gulp.task("vendorCss", function () {
-  return gulp.src("source/vendor_css/*.css")
-    .pipe(gulp.dest("build/css"));
-});
+//gulp.task("vendorCss", function () {
+//  return gulp.src("source/vendor_css/*.css")
+//    .pipe(gulp.dest("build/css"));
+//});
 
 gulp.task("js", function() {
   return gulp.src("source/js/*.js")
@@ -52,9 +52,9 @@ gulp.task("server", function () {
 
   gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css", "refresh"));
   gulp.watch("source/img/**/*.{svg,png,jpg,webp}", gulp.series("html", "refresh"));
-  gulp.watch("source/js/*.js", gulp.series("js", "refresh"));
+  gulp.watch("source/js/script.js", gulp.series("js", "refresh"));
   gulp.watch("source/*.html", gulp.series("html", "refresh"));
-  gulp.watch("source/ajax/*.html", gulp.series("ajax", "refresh"));
+  //gulp.watch("source/ajax/*.html", gulp.series("ajax", "refresh"));
 });
 
 gulp.task("refresh", function (done) {
@@ -83,20 +83,20 @@ gulp.task("ajax", function () {
       .pipe(gulp.dest("build/ajax"));
 });
 
-gulp.task("copy", function() {
-  return gulp.src([
-    "source/fonts/**/*.{woff,woff2,eot,svg,otf,ttf}",
-    "source/img/*.webp",
-    "source/favicon/*"
-  ], {
-    base: "source"
-  })
-  .pipe(gulp.dest("build"));
-});
+//gulp.task("copy", function() {
+//  return gulp.src([
+//    "source/fonts/**/*.{woff,woff2,eot,svg,otf,ttf}",
+//    "source/img/*.webp",
+//    "source/favicon/*"
+//  ], {
+//    base: "source"
+//  })
+//  .pipe(gulp.dest("build"));
+//});
 
 gulp.task("clean", function() {
   return del("build");
 });
 
-gulp.task("build", gulp.series("clean", "copy", "css", "vendorCss", "js", "images", "html", "ajax"));
+gulp.task("build", gulp.series("clean", /*"copy", */"css", /*"vendorCss", */"js", "images", "html"/*, "ajax"*/));
 gulp.task("start", gulp.series("build", "server"));

@@ -1,4 +1,6 @@
 .logo {
+    display: block;
+    
     &--header {
         width: 36px;
         height: 36px;
@@ -11,6 +13,9 @@
 }
 
 .logo__img {
+    width: 100%;
+    height: auto;
+
     &--mobile {
         display: block;
     }

@@ -1,0 +1,84 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    padding: 9px 0;
+    background-color: rgba(255,255,255,.93);
+}
+
+.header .site-container {
+    @include dflex(nowrap, row, center, center);
+    height: 100%;
+}
+
+.header__logo-link {
+    margin-right: auto;
+}
+
+.header__contacts {
+    @include dflex(nowrap, column, flex-start, center);
+}
+
+.header__phone {
+    margin: 0;
+}
+
+.header__phone a {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: $link-color;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.header__appoint-link {
+    @include gradient-text;
+    @include transition(color);
+    font-weight: 500;
+    color: $accent-color-dark;
+    text-transform: uppercase;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: rgba(255,255,255,0);
+    }
+}
+
+.header__messengers-list {
+    &--mobile {
+        @include dflex(nowrap, row, flex-start, center);
+    }
+
+    &--desktop {
+        display: none;
+    }
+}
+
+.header__menu-block {
+    margin-left: auto;
+}
+
+.header__menu-toggle {
+    @include background("../img/icon-burger-closed.svg");
+    display: block;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+}

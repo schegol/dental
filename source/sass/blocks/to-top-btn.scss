@@ -1,0 +1,28 @@
+@keyframes toTopBtnAnimation {
+    0% {
+        background-position: center bottom;  
+    }
+
+    50% {
+        background-position: center top;
+    }
+
+    100% {
+        background-position: center bottom;
+    }
+}
+
+.to-top-btn {
+    display: block;
+    width: 56px;
+    height: 74px;
+    background-repeat: no-repeat;
+    background-size: 57px 61px;
+    background-position: center bottom;
+    background-image: url("../img/icon-to-top-button.svg");
+    animation-name: toTopBtnAnimation;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
