@@ -6,6 +6,7 @@
     height: 70px;
     padding: 9px 0;
     background-color: rgba(255,255,255,.93);
+    z-index: 10;
 }
 
 .header .site-container {
@@ -13,12 +14,9 @@
     height: 100%;
 }
 
-.header__logo-link {
-    margin-right: auto;
-}
-
 .header__contacts {
     @include dflex(nowrap, column, flex-start, center);
+    margin: 0 auto;
 }
 
 .header__phone {
@@ -65,7 +63,7 @@
 }
 
 .header__menu-block {
-    margin-left: auto;
+    margin-left: 10px;
 }
 
 .header__menu-toggle {
@@ -78,7 +76,188 @@
     background-color: transparent;
     cursor: pointer;
 
+    &--close {
+        background-image: url("../img/icon-burger-open.svg");
+    }
+
     &:focus {
         outline: none;
+    }
+}
+
+.header__menu-wrapper {
+    @include transition(transform);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    background-color: #fff;
+    transform: translateY(-100%);
+    z-index: 30;
+
+    &--open {
+        transform: translateY(0);
+    }
+}
+
+.header__menu-mobile-header {
+    height: 70px;
+}
+
+.header__menu {
+    @include list-reset;
+    @include dflex(wrap, row, flex-start, flex-start);
+    margin-bottom: -18px;
+    padding: 0 20px;
+}
+
+.header__menu-item {
+    flex-basis: 50%;
+
+    &:not(.header__menu-item--parent) {
+        margin-bottom: 18px;
+    }
+
+    &--parent {
+        position: relative;
+        left: -20px;
+        flex-basis: 100%;
+        min-width: calc(100% + 40px);
+        padding: 0 20px;
+        background-color: $accent-color-dark;
+
+        &:not(:first-child) {
+            margin-top: 30px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.header__menu-link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: $accent-color-dark;
+    text-transform: uppercase;
+}
+
+.header__menu-item--parent .header__menu-link {
+    @include dflex(nowrap, row, space-between, center);
+    padding: 21px 0 23px;
+    color: #fff;
+
+    &::focus {
+        outline: none;
+    }
+    
+    &::after {
+        @include transition(transform);
+        @include background("../img/icon-mobile-submenu-arrow.svg");
+        content: "";
+        width: 26px;
+        height: 26px;
+        transform: scaleY(1);
+    }
+
+    &--submenu-open {
+        &::after {
+            transform: scaleY(-1);
+        }
+    }
+}
+
+.header__submenu {
+    @include list-reset;
+    padding-bottom: 30px;
+}
+
+.header__submenu-item {
+    &:not(:last-child) {
+        margin-bottom: 18px;
+    }
+}
+
+.header__submenu-link {
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.header__menu-mobile-footer {
+    position: relative;
+    margin-top: 60px;
+    padding-bottom: 30px;
+
+    &::before {
+        @include abs-pseudo;
+        top: -30px;
+        left: 50%;
+        width: calc(100% - 40px);
+        height: 1px;
+        background-color: #eee;
+        transform: translateX(-50%);
+    }
+}
+
+.header__menu-mobile-footer .site-container {
+    justify-content: space-between;
+}
+
+.header__mobile-social-text {
+    margin: 0;
+}
+
+.header__mobile-messengers {
+    @include list-reset;
+    @include dflex(wrap, row, flex-start, center);
+    flex-shrink: 0;
+    margin-left: 40px;
+}
+
+.header__mobile-messengers-item {
+    &:not(:last-child) {
+        margin-right: 10px;
+    }
+}
+
+.header__mobile-messengers-link {
+    @include transition(background-color);
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: $accent-color-medium;
+    border-radius: 50%;
+
+    &--telegram {
+        @include background("../img/icon-messengers-tg.svg");
+        background-size: 22px 18px;
+    }
+
+    &--whatsapp {
+        @include background("../img/icon-messengers-wa.svg");
+        background-size: 18px 18px;
+    }
+}
+
+@media (min-width: $tablet-width) {
+    .header__menu {
+        padding: 0 30px;
+    }
+
+    .header__menu-item {
+
+        &--parent {
+            left: -30px;
+            min-width: calc(100% + 60px);
+            padding: 0 30px;
+        }
+    }
+
+    .header__menu-mobile-footer::before {
+        width: calc(100% - 60px);
     }
 }

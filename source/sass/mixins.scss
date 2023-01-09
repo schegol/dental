@@ -63,7 +63,7 @@
 }
 
 @mixin transition ($prop: all) {
-    transition: $prop .3s linear;
+    transition: $prop .3s ease-out;
 }
 
 @mixin transition-delay {

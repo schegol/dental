@@ -25,11 +25,11 @@
 
                 <ul class="header__messengers-list header__messengers-list--desktop">
                     <li class="header__messengers-item">
-                        <a class="header__messengers-link header__messengers-link--telegram" href="#" target="_blank" rel="nofollow"></a>
+                        <a class="header__messengers-link header__messengers-link--telegram" href="#" target="_blank" rel="nofollow" aria-label="«Нежная Стоматология» в telegram"></a>
                     </li>
 
                     <li class="header__messengers-item">
-                        <a class="header__messengers-link header__messengers-link--whatsapp" href="#" target="_blank" rel="nofollow"></a>
+                        <a class="header__messengers-link header__messengers-link--whatsapp" href="#" target="_blank" rel="nofollow" aria-label="«Нежная Стоматология» в whatsapp"></a>
                     </li>
                 </ul>
 
@@ -37,9 +37,97 @@
             </div>
 
             <div class="header__menu-block">
-                <button class="header__menu-toggle"></button>
+                <button class="header__menu-toggle header__menu-toggle--open"></button>
 
+                <div class="header__menu-wrapper">
+                    <div class="header__menu-mobile-header">
+                        <div class="site-container">
+                            <a class="header__logo-link logo logo--header">
+                                <img class="logo__img logo__img--mobile" src="img/logo-header-mobile.png" alt="Логотип «Нежная Стоматология»" width="36" height="36">
+                            </a>
                 
+                            <div class="header__contacts">
+                                <p class="header__phone">
+                                    <a href="tel:+78001258988">8 800 125 89 88</a>
+                                </p>
+                
+                                <a class="header__appoint-link" href="#">Записаться</a>
+                            </div>
+                
+                            <div class="header__menu-block">
+                                <button class="header__menu-toggle header__menu-toggle--close"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="header__menu-body">
+                        <ul class="header__menu">
+                            <li class="header__menu-item header__menu-item--parent">
+                                <a class="header__menu-link" href="#">Услуги</a>
+
+                                <ul class="header__submenu" style="display: none;">
+                                    <li class="header__submenu-item">
+                                        <a class="header__submenu-link" href="#">Терапия</a>
+                                    </li>
+
+                                    <li class="header__submenu-item">
+                                        <a class="header__submenu-link" href="#">Имплантация</a>
+                                    </li>
+
+                                    <li class="header__submenu-item">
+                                        <a class="header__submenu-link" href="#">Хирургия</a>
+                                    </li>
+
+                                    <li class="header__submenu-item">
+                                        <a class="header__submenu-link" href="#">Ортодонтия</a>
+                                    </li>
+
+                                    <li class="header__submenu-item">
+                                        <a class="header__submenu-link" href="#">Гигиена</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="header__menu-item">
+                                <a class="header__menu-link" href="#">О клинике</a>
+                            </li>
+                            
+                            <li class="header__menu-item">
+                                <a class="header__menu-link" href="#">Наши врачи</a>
+                            </li>
+                        
+                            <li class="header__menu-item">
+                                <a class="header__menu-link" href="#">Цены</a>
+                            </li>
+
+                            <li class="header__menu-item">
+                                <a class="header__menu-link" href="#">Акции</a>
+                            </li>
+
+                            <li class="header__menu-item">
+                                <a class="header__menu-link" href="#">Контакты</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="header__menu-mobile-footer">
+                        <div class="site-container">
+                            <p class="header__mobile-social-text">
+                                Можете написать&nbsp;нам в&nbsp;Telegram или&nbsp;WhatsApp
+                            </p>
+
+                            <ul class="header__mobile-messengers">
+                                <li class="header__mobile-messengers-item">
+                                    <a class="header__mobile-messengers-link header__mobile-messengers-link--telegram" href="#" target="_blank" rel="nofollow" aria-label="«Нежная Стоматология» в telegram"></a>
+                                </li>
+
+                                <li class="header__mobile-messengers-item">
+                                    <a class="header__mobile-messengers-link header__mobile-messengers-link--whatsapp" href="#" target="_blank" rel="nofollow" aria-label="«Нежная Стоматология» в whatsapp"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 	</header>
@@ -221,6 +309,8 @@
             <a class="footer__to-top to-top-btn" href="javascript:;"></a>
         </div>
 	</footer>
+
+    <div class="overlay"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="js/slick.min.js"></script>
