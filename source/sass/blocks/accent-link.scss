@@ -1,0 +1,55 @@
+.accent-link {
+    @include transition(color);
+    @include gradient-text;
+    position: relative;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: $accent-color-dark;
+
+    &::after {
+        @include transition;
+        @include abs-pseudo;
+        bottom: -8px;
+        left: 0;
+        width: 50px;
+        height: 1px;
+        background-image: $gradient-simple;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: transparent;
+        outline: none;
+    }
+
+    &--appoint {
+        &::after {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .accent-link {
+        font-size: 18px;
+        line-height: 28px;
+        
+        &--appoint { 
+            &::after {
+                display: block;
+            }
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            &::after {
+                width: 100%;
+                background-image: $gradient;
+            }
+        }
+    }
+}

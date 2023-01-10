@@ -24,12 +24,15 @@
 }
 
 .header__phone a {
+    @include transition(color);
     font-weight: 500;
     font-size: 18px;
     line-height: 28px;
     color: $link-color;
 
+    &:hover,
     &:focus {
+        color: $footer-hover-color;
         outline: none;
     }
 }
@@ -137,11 +140,17 @@
 }
 
 .header__menu-link {
+    @include gradient-text;
+    @include transition(color);
     font-weight: 500;
     font-size: 16px;
     line-height: 26px;
     color: $accent-color-dark;
     text-transform: uppercase;
+
+    &:active {
+        color: transparent;
+    }
 }
 
 .header__menu-item--parent .header__menu-link {
@@ -181,10 +190,18 @@
 }
 
 .header__submenu-link {
+    @include transition(color);
     color: #fff;
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $footer-hover-color;
+        outline: none;
+    }
 }
 
 .header__menu-mobile-footer {
@@ -259,5 +276,335 @@
 
     .header__menu-mobile-footer::before {
         width: calc(100% - 60px);
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .header {
+        height: 120px;
+        padding-top: 39px;
+        padding-bottom: 25px;
+    }
+
+    .header__contacts {
+        flex-direction: row;
+        align-items: flex-start;
+        margin-right: 0;
+    }
+
+    .header__phone {
+        position: relative;
+        margin-right: 20px;
+        padding-left: 35px;
+
+        &::before {
+            @include abs-center-y;
+            @include background("../img/icon-header-phone.svg");
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .header__menu-mobile-header {
+        height: 120px;
+    }
+
+    .header__messengers-list {
+        &--desktop {
+            @include list-reset;
+            @include dflex(nowrap, row, center, center);
+            margin-right: 20px;
+        }
+    }
+
+    .header__messengers-item {
+        &:not(:last-child) {
+            margin-right: 7px;
+        }
+    }
+
+    .header__messengers-link {
+        @include dflex(nowrap, row, center, center);
+        @include transition(background-color);
+        @include background-inline;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $accent-color-medium;
+
+        &--telegram {
+            background-image: url("../img/icon-messengers-tg.svg");
+            background-size: 16px 14px;
+
+            &:hover,
+            &:focus {
+                background-color: $telegram-color;
+                outline: none;
+            }
+        }
+
+        &--whatsapp {
+            background-image: url("../img/icon-messengers-wa.svg");
+            background-size: 13px 13px;
+
+            &:hover,
+            &:focus {
+                background-color: $whatsapp-color;
+                outline: none;
+            }
+        }
+    }
+
+    .header__mobile-messengers-link {
+        &--telegram {
+            &:hover,
+            &:focus {
+                background-color: $telegram-color;
+                outline: none;
+            }
+        }
+
+        &--whatsapp {
+            &:hover,
+            &:focus {
+                background-color: $whatsapp-color;
+                outline: none;
+            }
+        }
+    }
+
+    .header__menu-block {
+        margin-left: 50px;
+    }
+
+    .header__menu {
+        padding: 0 40px;
+    }
+
+    .header__menu-item {
+        flex-basis: 25%;
+
+        &--parent {
+            left: -40px;
+            min-width: calc(100% + 80px);
+            padding: 0 40px;
+        }
+    }
+
+    .header__menu-mobile-footer {
+        &::before {
+            width: calc(100% - 80px);
+        }
+    }
+}
+
+@media (min-width: $big-desktop-width) {
+    .header .site-container {
+        justify-content: space-between;
+    }
+
+    .header__logo-link {
+        order: 0;
+    }
+
+    .header__contacts {
+        order: 2;
+        margin: 0;
+    }
+
+    .header__menu-block {
+        margin-left: 0;
+    }
+
+    .header__menu-wrapper {
+        position: static;
+        width: auto;
+        background-color: transparent;
+        transform: translateY(0);
+    }
+
+    .header__menu-toggle,
+    .header__menu-mobile-header,
+    .header__menu-mobile-footer {
+        display: none;
+    }
+
+    .header__menu {
+        flex-wrap: nowrap;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .header__menu-item {
+        flex-basis: auto;
+
+        &:not(:last-child) {
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
+
+        &:not(.header__menu-item--parent) {
+            margin-bottom: 0;
+        }
+
+        &--parent {
+            position: relative;
+            top: 0;
+            left: 0;
+            flex-basis: auto;
+            min-width: 0;
+            padding: 0 0 0 38px;
+            background-color: transparent;
+
+            &::before {
+                @include abs-center-y;
+                @include background("../img/icon-menu-with-submenu-burger.svg");
+                width: 18px;
+                height: 18px;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .header__menu-link {
+        @include gradient-text;
+        @include transition(color);
+        position: relative;
+        display: block;
+        white-space: nowrap;
+
+        &::after {
+            @include abs-pseudo;
+            @include transition(width);
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-image: $gradient;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: transparent;
+            outline: none;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+    
+    .header__menu-item--parent .header__menu-link {
+        @include gradient-text;
+        @include transition(color);
+        padding: 0;
+        color: $accent-color-dark;
+
+        &::before {
+            @include abs-center-y;
+        }
+
+        &::after {
+            @include abs-pseudo;
+            @include transition(width);
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-image: $gradient;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: transparent;
+            outline: none;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .header__submenu {
+        @include dflex(nowrap, column, flex-start, flex-start);
+        @include transition;
+        position: absolute;
+        top: calc(100% + 28px);
+        left: 0;
+        display: flex !important;
+        min-width: 365px;
+        padding: 20px 0;
+        box-shadow: $box-shadow;
+        opacity: 0;
+        z-index: -1;
+        visibility: hidden;
+    }
+
+    .header__menu-link:hover + .header__submenu,
+    .header__menu-link:focus + .header__submenu,
+    .header__submenu:hover,
+    .header__submenu:focus-within {
+        opacity: 1;
+        z-index: 10;
+        visibility: visible;
+
+        &::before {
+            @include abs-pseudo;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 28px;
+            transform: translateY(-100%);
+        }
+    }
+
+    .header__submenu-item {
+        @include dflex(nowrap, row, flex-start, center);
+        height: 50px;
+
+        &:not(:last-child) {
+            margin-bottom: 0;
+        }
+    }
+
+    .header__submenu-link {
+        @include dflex(nowrap, row, flex-start, center);
+        @include gradient-text;
+        @include transition;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 0 33px;
+        color: $accent-color-dark;
+
+        &::before {
+            @include abs-center-y;
+            @include transition(background-color);
+            width: 1px;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        &:hover,
+        &:focus {
+            padding-left: 43px;
+            color: transparent;
+            outline: none;
+
+            &::before {
+                background-color: $footer-hover-color;
+            }
+        }
+    }
+
+    .header__messengers-list {
+        &--desktop {
+            margin-right: 47px;
+        }
     }
 }

@@ -1,0 +1,43 @@
+.slider-arrows {
+    @include dflex(nowrap, row, flex-start, center);
+}
+
+.slider-arrows__arrow {
+    @include transition;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: 1px solid;
+    border-image: $gradient-simple 1;
+    background-color: #fff;
+    cursor: pointer;
+
+    & path {
+        @include transition(stroke);
+        stroke: $accent-color-medium;
+    }
+
+    &--prev {
+        margin-right: 10px;
+    }
+
+    &:hover,
+    &:focus {
+        border: 1px solid $accent-color-medium;
+        background-color: $accent-color-medium;
+        outline: none;
+
+        & path {
+            stroke: #fff;
+        }
+    }
+
+    &:active {
+        border-color: $accent-color-dark;
+        background-color: $accent-color-dark;
+
+        & path {
+            stroke: #fff;
+        }
+    }
+}
