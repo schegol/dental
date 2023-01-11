@@ -1,4 +1,6 @@
 .section {
+    overflow-x: clip;
+    
     &:not(:first-of-type) {
         margin-top: 50px;
     }
@@ -53,6 +55,40 @@
         &:not(.section--map),
         &--map {
             margin-bottom: 140px;
+        }
+
+        &--circle {
+            position: relative;
+
+            &::after {
+                @include abs-pseudo;
+                top: 50%;
+                width: 912px;
+                height: 912px;
+                border-radius: 50%;
+                background-color: $bg-color;
+                transform: translate(45%, -50%);
+                z-index: -1;
+            }
+        }
+
+        &--circle-right {
+            &::after {
+                right: 0;
+            }
+        }
+
+        &--circle-left {
+            &::after {
+                left: 0;
+            }
+        }
+
+        &--circle-big {
+            &::after {
+                width: 1444px;
+                height: 1444px;
+            }
         }
     }
 
