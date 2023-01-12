@@ -21,6 +21,19 @@ const closeMobileMenu = function() {
     submenuToggles.removeClass('header__menu-link--submenu-open');
 }
 
+//реинит слайдеров по рейсайзу:
+const reinitSliders = function(selector) {
+    let sliderItems = selector;
+
+    if (sliderItems.length) {
+        let slider = sliderItems.parent();
+
+        if ($(window).width() >= 1024 && !slider.hasClass('slick-initialized')) {
+            slider.slick('reinit');
+        }
+    }
+}
+
 $(function() {
     //кнопка "наверх":
     let toTopBtn = $('.to-top-btn');
@@ -59,6 +72,61 @@ $(function() {
     sliderBtns.on('click', function() {
         $(this).blur();
     });
+
+    //слайдер с отзывами:
+    let reviewsSliderItems = $('.reviews__item');
+
+    if (reviewsSliderItems.length) {
+        let slider = reviewsSliderItems.parent('.reviews__wrapper');
+
+        slider.slick({
+            infinite: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+            prevArrow: slider.closest('.section').find('.slider-arrows__arrow--prev'),
+            nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
+            responsive: [
+                {
+                    breakpoint: 1023,
+                    settings: 'unslick'
+                },
+            ]
+        });
+    }
+
+    //слайдер с улыбками:
+    let smilesSliderItems = $('.smiles__item');
+
+    if (smilesSliderItems.length) {
+        let slider = smilesSliderItems.parent('.smiles__wrapper');
+
+        slider.slick({
+            infinite: false,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            arrows: false,
+            touchThreshold: 30,
+            responsive: [
+                {
+                    breakpoint: 1919,
+                    settings: {
+                        slidesToShow: 5,
+                    }
+                },
+                {
+                    breakpoint: 1499,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: 'unslick'
+                },
+            ]
+        });
+    }
 });
 
 $(window).on('load resize', function() {
@@ -69,4 +137,10 @@ $(window).on('load resize', function() {
             closeMobileMenu();
         }
     }
+});
+
+$(window).on('resize orientationChange', function(event) {
+    //реинит слайдеров по рейсайзу:
+    reinitSliders($('.reviews__item'));
+    reinitSliders($('.smiles__item'));
 });

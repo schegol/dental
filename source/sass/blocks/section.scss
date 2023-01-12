@@ -67,7 +67,6 @@
                 height: 912px;
                 border-radius: 50%;
                 background-color: $bg-color;
-                transform: translate(45%, -50%);
                 z-index: -1;
             }
         }
@@ -75,12 +74,14 @@
         &--circle-right {
             &::after {
                 right: 0;
+                transform: translate(45%, -50%);
             }
         }
 
         &--circle-left {
             &::after {
                 left: 0;
+                transform: translate(-45%, -50%);
             }
         }
 

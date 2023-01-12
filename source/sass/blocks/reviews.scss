@@ -1,0 +1,177 @@
+.reviews {
+    position: relative;
+    left: -20px;
+    width: calc(100% + 40px);
+}
+
+.reviews__wrapper {
+    @include dflex(nowrap, row, flex-start, flex-start);
+    @include hide-scrollbar;
+    margin-bottom: -50px;
+    padding: 0 40px 50px;
+    overflow-x: auto;
+}
+
+.reviews__item {
+    @include dflex(nowrap, row, flex-start, stretch);
+    @include transition(box-shadow);
+    width: 300px;
+    min-width: 300px;
+    padding: 30px 20px;
+    box-shadow: $box-shadow;
+    border: 1px solid #eee;
+    background-color: #fff;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    &:active {
+        box-shadow: $box-shadow-hover;
+    }
+}
+
+.reviews__item-content {
+    @include dflex(nowrap, column, flex-start, stretch);
+}
+
+.reviews__item-head {
+    @include dflex(nowrap, row, flex-start, center);
+    margin-bottom: 15px;
+}
+
+.reviews__item-photo-block {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.reviews__item-authors-photo {
+    @include object-fit;
+}
+
+.reviews__item-head-desc {
+    @include dflex(nowrap, column, flex-start, flex-start);
+}
+
+.reviews__item-head-text {
+    @include dflex(nowrap, column, flex-start, flex-start);
+}
+
+.reviews__item-authors-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: $link-color;
+}
+
+.reviews__item-service {
+    margin-bottom: 3px;
+    color: $secondary-text-color;
+}
+
+.reviews__item-head-rating {
+    @include dflex(nowrap, row, space-between, center);
+    width: 83px;
+    height: 15px;
+}
+
+.reviews__item-rating-star {
+    @include background("../img/icon-reviews-star-empty.svg");
+    width: 15px;
+    height: 15px;
+}
+
+.reviews__item-head-rating--1 .reviews__item-rating-star:nth-child(1),
+.reviews__item-head-rating--2 .reviews__item-rating-star:nth-child(1),
+.reviews__item-head-rating--2 .reviews__item-rating-star:nth-child(2),
+.reviews__item-head-rating--3 .reviews__item-rating-star:nth-child(1),
+.reviews__item-head-rating--3 .reviews__item-rating-star:nth-child(2),
+.reviews__item-head-rating--3 .reviews__item-rating-star:nth-child(3),
+.reviews__item-head-rating--4 .reviews__item-rating-star:nth-child(1),
+.reviews__item-head-rating--4 .reviews__item-rating-star:nth-child(2),
+.reviews__item-head-rating--4 .reviews__item-rating-star:nth-child(3),
+.reviews__item-head-rating--4 .reviews__item-rating-star:nth-child(4),
+.reviews__item-head-rating--5 .reviews__item-rating-star:nth-child(1),
+.reviews__item-head-rating--5 .reviews__item-rating-star:nth-child(2),
+.reviews__item-head-rating--5 .reviews__item-rating-star:nth-child(3),
+.reviews__item-head-rating--5 .reviews__item-rating-star:nth-child(4),
+.reviews__item-head-rating--5 .reviews__item-rating-star:nth-child(5) {
+    background-image: url("../img/icon-reviews-star.svg");
+}
+
+.reviews__item-img-block {
+    display: none;
+}
+
+@media (min-width: $tablet-width) {
+    .reviews {
+        left: -30px;
+        width: calc(100% + 60px);
+    }
+
+    .reviews__wrapper {
+        padding: 0 60px 50px;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .reviews .slick-list {
+        padding: 0 !important;
+    }
+
+    .reviews {
+        left: 0;
+        width: 100vw;
+    }
+
+    .reviews__wrapper {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .reviews__item {
+        position: relative;
+        width: calc(100vw - 80px) !important;
+        max-width: 1410px;
+        margin: 0 auto;
+        padding: 0;
+
+        &:not(:last-child) {
+            margin-right: auto;
+        }
+
+        &:hover {
+            box-shadow: $box-shadow-hover;
+        }
+    }
+
+    .reviews__item-content {
+        padding: 40px 0 58px 40px;
+        width: calc(65.75% - 40px);
+    }
+
+    .reviews__item-img-block {
+        position: absolute;
+        top: 0;
+        right: 0;
+        flex-shrink: 0;
+        display: block;
+        width: 34.25%;
+        height: 100%;
+        margin-left: 95px;
+    }
+
+    .reviews__item-img {
+        @include object-fit;
+    }
+}
+
+@media (min-wdith: $big-desktop-width) {
+    .reviews__item-content {
+        width: calc(65.75% - 95px);
+    }
+}
