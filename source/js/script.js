@@ -84,6 +84,7 @@ $(function() {
             slidesToShow: 1,
             slidesToScroll: 1,
             centerMode: true,
+            touchThreshold: 30,
             prevArrow: slider.closest('.section').find('.slider-arrows__arrow--prev'),
             nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
             responsive: [
@@ -127,6 +128,42 @@ $(function() {
             ]
         });
     }
+
+    //слайдер с врачами:
+    let doctorsSliderItems = $('.doctors__item');
+
+    if (doctorsSliderItems.length) {
+        let slider = doctorsSliderItems.parent('.doctors__wrapper');
+
+        slider.slick({
+            infinite: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            prevArrow: slider.closest('.section').find('.slider-arrows__arrow--prev'),
+            nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
+            touchThreshold: 30,
+            responsive: [
+                {
+                    breakpoint: 1499,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: 'unslick'
+                },
+            ]
+        });
+
+        slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            let lastSlideIndex = slick.slideCount - 1;
+
+            if ($(slick.$slides[lastSlideIndex]).hasClass('slick-active') && nextSlide > currentSlide) {
+                return false;
+            }
+        });
+    }
 });
 
 $(window).on('load resize', function() {
@@ -143,4 +180,5 @@ $(window).on('resize orientationChange', function(event) {
     //реинит слайдеров по рейсайзу:
     reinitSliders($('.reviews__item'));
     reinitSliders($('.smiles__item'));
+    reinitSliders($('.doctors__item'));
 });

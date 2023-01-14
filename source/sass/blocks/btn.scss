@@ -1,0 +1,41 @@
+.btn {
+    @include dflex(nowrap, row, center, center);
+    @include transition(background-color);
+    width: 100%;
+    min-height: 50px;
+    padding: 0 10px;
+    border: none;
+    background-color: $accent-color-medium;
+    cursor: pointer;
+
+    &:active {
+        background-color: $accent-color-dark;
+    }
+}
+
+.btn__text {
+    @include gradient-text;
+    @include transition(color);
+    color: #fff;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.btn:active .btn__text {
+    color: transparent;
+}
+
+@media (min-width: $desktop-width) {
+    .btn {
+        &:hover,
+        &:focus {
+            background-color: $accent-color-dark;
+            outline: none;
+        }
+    }
+
+    .btn:hover .btn__text,
+    .btn:focus .btn__text {
+        color: transparent;
+    }
+}

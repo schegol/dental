@@ -1,0 +1,287 @@
+.doctors {
+    position: relative;
+    left: -20px;
+    width: calc(100% + 40px);
+}
+
+.doctors__wrapper {
+    @include dflex(nowrap, row, flex-start, flex-start);
+    @include hide-scrollbar;
+    overflow-x: auto;
+    padding: 0 20px;
+}
+
+.doctors__item {
+    @include dflex(nowrap, column, flex-start, stretch);
+    position: relative;
+    flex-basis: 300px;
+    flex-shrink: 0;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+.doctors__item-experience {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: .05em;
+    color: $text-color;
+    text-transform: uppercase;
+    background-color: rgba(255,255,255,.5);
+    z-index: 2;
+}
+
+.doctors__item-img-block {
+    @include transition(box-shadow);
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: calc(100% / 300 * 443);
+    box-shadow: $box-shadow;
+}
+
+.doctors__item:active .doctors__item-img-block {
+    box-shadow: $box-shadow-hover;
+}
+
+.doctors__item-img {
+    @include object-fit;
+    @include center;
+    position: absolute;
+}
+
+.doctors__item-info {
+    @include dflex(nowrap, column, flex-start, stretch);
+    position: relative;
+}
+
+.doctors__item-text {
+    @include dflex(nowrap, column, flex-end, center);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    min-height: 170px;
+    padding: 15px 10px;
+    
+    &::after {
+        @include abs-center;
+        width: 100%;
+        height: calc(100% + 2px);
+        background-image: linear-gradient(transparent, #fff);
+        z-index: 0;
+    }
+}
+
+.doctors__item-name {
+    position: relative;
+    font-size: 16px;
+    line-height: 26px;
+    color: $link-color;
+    text-align: center;
+    z-index: 1;
+}
+
+.doctors__item-speciality {
+    position: relative;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 26px;
+    color: $text-color;
+    text-align: center;
+    z-index: 1;
+}
+
+.doctors__item-reviews {
+    position: relative;
+    padding-left: 29px;
+    color: $text-color;
+    text-align: center;
+    z-index: 1;
+
+    &::before {
+        @include abs-center-y;
+        @include background("../img/icon-reviews-star.svg");
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.doctors__item-appoint {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.doctors__desc {
+    @include gradient-text;
+    position: relative;
+    margin-top: 30px;
+    padding: 0 20px 0 84px;
+    color: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-transform: uppercase;
+
+    &::before {
+        @include background("../img/icon-doctors-description.svg");
+        @include abs-pseudo;
+        top: 0;
+        left: 20px;
+        width: 44px;
+        height: 55px;
+    }
+}
+
+@media (min-width: $tablet-width) {
+    .doctors .slick-list {
+        padding: 0 !important;
+    }
+
+    .doctors {
+        left: -30px;
+        width: calc(100% + 60px);
+    }
+    
+    .doctors__wrapper {
+        padding: 0 30px;
+    }
+
+    .doctors__desc {
+        &::before {
+            @include center-y;
+        }
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .doctors {
+        position: static;
+        width: 100%;
+    }
+
+    .doctors__wrapper {
+        position: relative;
+        left: -15px;
+        width: calc(100% + 30px);
+        padding: 0;
+        overflow: initial;
+    }
+
+    .doctors__item {
+        @include transition;
+        top: 0;
+        flex-basis: auto;
+        margin-right: 15px;
+        margin-left: 15px;
+        opacity: 1;
+
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+
+        &::after {
+            @include abs-center-x;
+            top: auto;
+            bottom: 0;
+            width: 100%;
+            height: 10px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            top: -10px;
+            outline: none;
+
+            &::after {
+                bottom: -10px;
+            }
+        }
+
+        &:not(.slick-active) {
+            opacity: 0;
+        }
+    }
+
+    .doctors__item-img-block {
+        position: relative;
+
+        &::before {
+            @include abs-center;
+            @include transition(background-color);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.08);
+            z-index: 1;
+        }
+    }
+
+    .doctors__item:hover .doctors__item-img-block,
+    .doctors__item:focus .doctors__item-img-block {
+        box-shadow: $box-shadow-hover;
+        outline: none;
+
+        &::before {
+            background-color: transparent;
+        }
+    }
+
+    .doctors__item-info {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .doctors__item-text {
+        @include transition(padding-bottom);
+        position: relative;
+        bottom: 0;
+        left: 0;
+        padding-bottom: 30px;
+    }
+
+    .doctors__item:hover .doctors__item-text,
+    .doctors__item:focus .doctors__item-text {
+        padding-bottom: 90px;
+    }
+
+    .doctors__item-name,
+    .doctors__item-speciality {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .doctors__item-reviews {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .doctors__item-appoint {
+        @include transition;
+        position: absolute;
+        bottom: -50px;
+        align-self: center;
+        width: 259px;
+        z-index: 2;
+    }
+
+    .doctors__item:hover .doctors__item-appoint,
+    .doctors__item:focus .doctors__item-appoint {
+        bottom: 20px;
+    }
+
+    .doctors__desc {
+        margin-top: 74px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
