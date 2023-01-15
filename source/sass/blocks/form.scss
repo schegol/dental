@@ -1,0 +1,203 @@
+.form__visible-fields {
+    @include dflex(nowrap, column, flex-start, stretch);
+}
+
+.form__input-row {
+    @include dflex(nowrap, column, flex-start, stretch);
+}
+
+.form__input-label {
+    position: relative;
+    width: 100%;
+}
+
+.form__input,
+.form__textarea {
+    @include transition;
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    line-height: 26px;
+    background-color: #fff;
+    border: 1px solid #EEE;
+
+    &::placeholder {
+        color: $secondary-text-color;
+        opacity: 1;
+    }
+
+    &:hover {
+        border: 1px solid;
+        border-image: $gradient 1;
+    }
+
+    &:focus {
+        border-color: $accent-color-medium;
+        outline: none;
+    }
+}
+
+.form__input-label--error .form__input,
+.form__input-label--error .form__textarea {
+    border-color: $alert-color;
+}
+
+.form__textarea {
+    height: 100px;
+    resize: none;
+}
+
+.form__input-error {
+    display: none;
+}
+
+.form__input-label--error .form__input-error {
+    @include dflex(nowrap, row, center, center);
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    height: 48px;
+    padding: 0 54px 0 0;
+    color: $alert-color;
+    background-color: #fff;
+    z-index: 1;
+
+    &::before {
+        @include abs-center-y;
+        left: -8px;
+        width: 8px;
+        height: 100%;
+        background-image: linear-gradient(to right, transparent, #fff 75%);
+    }
+
+    &::after {
+        @include abs-center-y;
+        @include background("../img/icon-input-error.svg");
+        right: 20px;
+        left: auto;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.form--accent .form__checkbox-block {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form__checkbox-label {
+    @include dflex(nowrap, row, flex-start, flex-start);
+    position: relative;
+    padding-left: 50px;
+    cursor: pointer;
+
+    &::before {
+        @include abs-pseudo;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border: 1px solid;
+        border-image: $gradient-simple 1;
+    }
+}
+
+.form__checkbox:checked + .form__checkbox-label::after {
+    @include abs-pseudo;
+    @include background("../img/icon-form-agreement-check.svg");
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.form__checkbox-text {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.form--accent .form__checkbox-text {
+    color: $accent-color-light;
+}
+
+.form--accent .form__file-block {
+    margin-top: 10px;
+}
+
+.form___file-text {
+    position: relative;
+    padding-left: 32px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 26px;
+
+    &::before {
+        @include abs-center-y;
+        @include background("../img/icon-file-input.svg");
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .form__input-row {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .form__input,
+    .form__textarea {
+        height: 60px;
+        margin-bottom: 20px;
+        padding: 17px 30px;
+    }
+
+    .form__textarea {
+        height: 90px;
+    }
+
+    .form__input-row .form__input-label {
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+    }
+
+    .form--accent .form__checkbox-block {
+        max-width: 426px;
+        margin-bottom: 0;
+        padding-right: 20px;
+    }
+
+    .form__checkbox-block .form__input-label {
+        margin-left: 0;
+    }
+
+    .form__checkbox-text {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .form--accent .form__file-block {
+        flex-basis: auto;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .form__file-label {
+        cursor: pointer;
+    }
+
+    .form___file-text {
+        white-space: nowrap;
+    }
+
+    .form__submit {
+        align-self: flex-start;
+        width: auto;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+}

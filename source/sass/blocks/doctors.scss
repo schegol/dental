@@ -118,27 +118,6 @@
     line-height: 24px;
 }
 
-.doctors__desc {
-    @include gradient-text;
-    position: relative;
-    margin-top: 30px;
-    padding: 0 20px 0 84px;
-    color: transparent;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-    text-transform: uppercase;
-
-    &::before {
-        @include background("../img/icon-doctors-description.svg");
-        @include abs-pseudo;
-        top: 0;
-        left: 20px;
-        width: 44px;
-        height: 55px;
-    }
-}
-
 @media (min-width: $tablet-width) {
     .doctors .slick-list {
         padding: 0 !important;
@@ -151,12 +130,6 @@
     
     .doctors__wrapper {
         padding: 0 30px;
-    }
-
-    .doctors__desc {
-        &::before {
-            @include center-y;
-        }
     }
 }
 
@@ -268,7 +241,7 @@
     .doctors__item-appoint {
         @include transition;
         position: absolute;
-        bottom: -50px;
+        bottom: -60px;
         align-self: center;
         width: 259px;
         z-index: 2;
@@ -277,11 +250,5 @@
     .doctors__item:hover .doctors__item-appoint,
     .doctors__item:focus .doctors__item-appoint {
         bottom: 20px;
-    }
-
-    .doctors__desc {
-        margin-top: 74px;
-        font-size: 18px;
-        line-height: 28px;
     }
 }

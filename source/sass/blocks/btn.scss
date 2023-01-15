@@ -1,15 +1,26 @@
 .btn {
     @include dflex(nowrap, row, center, center);
-    @include transition(background-color);
+    // @include transition;
     width: 100%;
     min-height: 50px;
     padding: 0 10px;
     border: none;
     background-color: $accent-color-medium;
+    transition: border-color .3s ease-out, background-color .3s ease-out;
     cursor: pointer;
 
     &:active {
         background-color: $accent-color-dark;
+    }
+
+    &--accent-form {
+        background-color: transparent;
+        border: 2px solid #fff;
+
+        &:active {
+            background-color: $accent-color-medium;
+            border-color: $accent-color-medium;
+        }
     }
 }
 
@@ -19,18 +30,38 @@
     color: #fff;
     letter-spacing: .05em;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .btn:active .btn__text {
     color: transparent;
 }
 
+.form__submit {
+    margin-top: 30px;
+}
+
 @media (min-width: $desktop-width) {
     .btn {
+        min-height: 60px;
+
         &:hover,
         &:focus {
             background-color: $accent-color-dark;
+            border-color: $accent-color-dark;
             outline: none;
+        }
+
+        &--accent-form {
+            font-size: 16px;
+            line-height: 20px;
+
+            &:hover,
+            &:focus {
+                background-color: $accent-color-medium;
+                border-color: $accent-color-medium;
+                outline: none;
+            }
         }
     }
 
