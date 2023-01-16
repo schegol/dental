@@ -1,0 +1,9 @@
+.index-intro__slider {
+    margin-bottom: 50px;
+}
+
+@media (min-width: $desktop-width) {
+    .index-intro__slider {
+        margin-bottom: 60px;
+    }    
+}

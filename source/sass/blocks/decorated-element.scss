@@ -1,0 +1,76 @@
+.decorated-element {
+    position: relative;
+    width: calc(100% - 20px);
+
+    &::after {
+        @include abs-pseudo;
+        top: 20px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid;
+        border-image: $gradient 1;
+        z-index: 1;
+    }
+
+    &--left {
+        margin-left: auto;
+
+        &::after {
+            left: -20px;
+        }
+    }
+
+    &--right {
+        margin-right: auto;
+
+        &::after {
+            right: -20px;
+        }
+    }
+}
+
+@media (min-width: $tablet-width) {
+    .decorated-element {
+        width: calc(100% - 30px);
+
+        &::after {
+            @include abs-pseudo;
+            top: 30px;
+        }
+    
+        &--left {  
+            &::after {
+                left: -30px;
+            }
+        }
+    
+        &--right {
+            &::after {
+                right: -30px;
+            }
+        }
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .decorated-element {
+        width: calc(100% - 60px);
+
+        &::after {
+            @include abs-pseudo;
+            top: 60px;
+        }
+    
+        &--left {  
+            &::after {
+                left: -60px;
+            }
+        }
+    
+        &--right {
+            &::after {
+                right: -60px;
+            }
+        }
+    }
+}

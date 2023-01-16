@@ -164,6 +164,119 @@ $(function() {
             }
         });
     }
+
+    //переключение вкладок с контактами:
+    let contactsToggles = $('.contacts__menu-link');
+
+    if (contactsToggles.length) {
+        contactsToggles.each(function() {
+            let toggle = $(this);
+
+            toggle.on('click', function(e) {
+                e.preventDefault();
+
+                if (toggle.hasClass('contacts__menu-link--selected')) {
+                    return;
+                }
+
+                let toggleId = toggle.data('id'),
+                    contactsBlocks = $('.contacts__item'),
+                    contactsBlockToShow = contactsBlocks.filter('[data-id="'+toggleId+'"]');
+
+                contactsToggles.removeClass('contacts__menu-link--selected');
+                toggle.addClass('contacts__menu-link--selected');
+                contactsBlocks.hide();
+                contactsBlockToShow.show();
+            });
+        });
+    }
+
+    //кастомные кнопки у видео:
+    let playButtons = $('.video-about__video-play-btn');
+
+    playButtons.each(function() {
+        let btn = $(this),
+            video = btn.prev('video');
+
+        if (video.length) {
+            btn.on('click', function() {
+                if (video[0].paused == true) {
+                    video[0].play();
+                    btn.addClass('video-about__video-play-btn--playing');
+                } else {
+                    video[0].pause();
+                    btn.removeClass('video-about__video-play-btn--playing');
+                }
+
+                btn.blur();
+            });
+        }
+    });
+
+    //основной слайдер на главной:
+    let indexSliderItems = $('.index-slider__item');
+
+    if (indexSliderItems.length) {
+        let slider = indexSliderItems.parent('.index-slider__items');
+
+        if ($(window).width() >= 1024) {
+            slider.on('init', function (slick) {
+                setTimeout(function() {
+                    let controls = slider.closest('.section').find('.index-slider__controls'),
+                        slide = slider.find('.slick-current');
+                        slideHeight = slide.offset().top + slide.outerHeight(),
+                        btn = slide.find('.index-slider__item-link'),
+                        btnOffsetTop = btn.offset().top,
+                        btnOffsetBottom = btnOffsetTop + btn.outerHeight(),
+                        btnMargin = slideHeight - btnOffsetBottom;
+
+                    if (slideHeight == btnOffsetBottom) {
+                        controls.css('top', '-60px');
+                    } else if (Math.abs(btnMargin) > 0) {
+                        controls.css('top', -btnMargin - 60);
+                    }
+                }, 300);  
+            });
+        }
+
+        slider.slick({
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            speed: 500,
+            cssEase: 'ease-out',
+            draggable: false,
+            swipe: false,
+            swipeToSlide: false,
+            touchMove: false,
+            dots: true,
+            dotsClass: 'index-slider__controls-dots-list',
+            appendDots: slider.closest('.index-slider').find('.index-slider__controls-dots'),
+            prevArrow: slider.closest('.index-slider').find('.slider-arrows__arrow--prev'),
+            nextArrow: slider.closest('.index-slider').find('.slider-arrows__arrow--next'),
+        });
+
+        if ($(window).width() >= 1024) {
+            slider.on('afterChange', function (event, slick, currentSlide) {
+                let controls = slider.closest('.section').find('.index-slider__controls'),
+                    slide = $(slick.$slides[currentSlide]),
+                    slideHeight = slide.offset().top + slide.outerHeight(),
+                    btn = slide.find('.index-slider__item-link'),
+                    btnOffsetTop = btn.offset().top,
+                    btnOffsetBottom = btnOffsetTop + btn.outerHeight(),
+                    btnMargin = slideHeight - btnOffsetBottom;
+
+                if (slideHeight == btnOffsetBottom) {
+                    controls.css('top', '-60px');
+                } else if (Math.abs(btnMargin) > 0) {
+                    controls.css('top', -btnMargin - 60);
+                }
+            });
+        }
+    }
 });
 
 $(window).on('load resize', function() {

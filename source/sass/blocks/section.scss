@@ -102,6 +102,17 @@
             margin-bottom: 140px;
         }
 
+        &--smaller-margins {
+            &:not(:first-of-type) {
+                margin-top: 80px;
+            }
+        
+            &:not(.section--map),
+            &--map {
+                margin-bottom: 80px;
+            }
+        }
+
         &--circle {
             position: relative;
 
@@ -112,6 +123,7 @@
                 height: 912px;
                 border-radius: 50%;
                 background-color: $bg-color;
+                opacity: .7;
                 z-index: -1;
             }
         }
@@ -130,10 +142,27 @@
             }
         }
 
+        &--circle-medium {
+            &::after {
+                width: 1000px;
+                height: 1000px;
+            }
+        }
+
         &--circle-big {
             &::after {
                 width: 1444px;
                 height: 1444px;
+            }
+        }
+
+        &--circle-intro {
+            &::after {
+                top: 0;
+                right: 0;
+                width: 1221px;
+                height: 1221px;
+                transform: translate(220px, -45%);
             }
         }
 
