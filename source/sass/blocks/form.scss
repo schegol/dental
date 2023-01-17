@@ -119,6 +119,10 @@
     line-height: 20px;
 }
 
+.form__checkbox-text a {
+    color: $accent-color-dark;
+}
+
 .form--accent .form__checkbox-text {
     color: $accent-color-light;
 }
@@ -140,6 +144,14 @@
         width: 22px;
         height: 22px;
     }
+}
+
+.form__submit {
+    align-self: center;
+}
+
+.form.modal__form .form__checkbox-block {
+    margin-top: 20px;
 }
 
 @media (min-width: $desktop-width) {
@@ -195,9 +207,12 @@
     }
 
     .form__submit {
-        align-self: flex-start;
         width: auto;
         padding-right: 50px;
         padding-left: 50px;
+    }
+
+    .form--accent .form__submit {
+        align-self: flex-start;
     }
 }

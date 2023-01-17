@@ -276,7 +276,7 @@
                 <div class="video-about">
                     <div class="video-about__video-block">
                         <div class="video-about__video-wrapper decorated-element decorated-element--left">
-                            <video class="video-about__video" type="video/mp4" src="/test_video.mp4" poster="img/img-video-poster.jpg" preload=""></video>
+                            <video class="video-about__video" type="video/mp4" src="video/test_video.mp4" poster="img/img-video-poster.jpg" preload=""></video>
                             <button class="video-about__video-play-btn"></button>
                         </div>
                         <span class="video-about__video-caption">Посмотрите видеопрезентацию нашей клиники</span>
@@ -1202,6 +1202,65 @@
 	</footer>
 
     <div class="overlay"></div>
+
+    <div class="modal modal--form">
+        <button class="modal__close">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.241103 15.7585C0.401236 15.9198 0.612 16 0.822764 16C1.03333 16 1.24409 15.9188 1.40543 15.7585L8.00033 9.16377L14.5958 15.7585C14.7561 15.9198 14.9667 16 15.1774 16C15.387 16 15.5976 15.9188 15.7589 15.7585C16.0804 15.437 16.0804 14.9159 15.7589 14.5944L9.16427 7.99985L15.7589 1.40539C16.0804 1.08373 16.0804 0.56256 15.7589 0.241097C15.4374 -0.0803657 14.9162 -0.0803657 14.5948 0.241097L8.00005 6.83565L1.40543 0.241097C1.08376 -0.0803657 0.562574 -0.0803657 0.241103 0.241097C-0.0803677 0.56256 -0.0803677 1.08373 0.241103 1.40539L6.83605 7.99962L0.241103 14.5944C-0.0803677 14.9159 -0.0803677 15.437 0.241103 15.7585Z" fill="#C1C1C1"/>
+            </svg>                
+        </button>
+
+        <h4 class="modal__heading">Запись на прием</h4>
+
+        <p class="modal__desc">
+            Заполните форму и мы свяжемся с вами и обсудим все детали и удобное для вас время приема
+        </p>
+
+        <form class="modal__form form" action="#" method="post">
+            <div class="form__visible-fields">
+                <label class="form__input-label">
+                    <input class="form__input" type="text" name="NAME" placeholder="Ваше имя *">
+                    <span class="form__input-error">поле не заполнено</span>
+                </label>
+                
+                <label class="form__input-label">
+                    <input class="form__input" type="text" name="PHONE" placeholder="Телефон *">
+                    <span class="form__input-error">поле не заполнено</span>
+                </label>
+
+                <div class="form__checkbox-block">
+                    <input class="form__checkbox hidden-input" type="checkbox" name="AGREEMENT" id="modal-agreement">
+                    <label class="form__checkbox-label" for="modal-agreement">
+                        <span class="form__checkbox-text">Принимаю <a href="#">пользовательское соглашение</a> и <a>политику конфиденциальности</a></span>
+                    </label>
+                </div>
+
+                <button class="form__submit btn">
+                    <span class="btn__text">
+                        отправить
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal modal--form-success">
+        <button class="modal__close">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.241103 15.7585C0.401236 15.9198 0.612 16 0.822764 16C1.03333 16 1.24409 15.9188 1.40543 15.7585L8.00033 9.16377L14.5958 15.7585C14.7561 15.9198 14.9667 16 15.1774 16C15.387 16 15.5976 15.9188 15.7589 15.7585C16.0804 15.437 16.0804 14.9159 15.7589 14.5944L9.16427 7.99985L15.7589 1.40539C16.0804 1.08373 16.0804 0.56256 15.7589 0.241097C15.4374 -0.0803657 14.9162 -0.0803657 14.5948 0.241097L8.00005 6.83565L1.40543 0.241097C1.08376 -0.0803657 0.562574 -0.0803657 0.241103 0.241097C-0.0803677 0.56256 -0.0803677 1.08373 0.241103 1.40539L6.83605 7.99962L0.241103 14.5944C-0.0803677 14.9159 -0.0803677 15.437 0.241103 15.7585Z" fill="#C1C1C1"/>
+            </svg>
+        </button>
+
+        <h4 class="modal__heading">Ваша заявка принята!</h4>
+
+        <p class="modal__desc">
+            Спасибо, мы свяжемся с вами и обсудим все детали и удобное для вас время приема
+        </p>
+
+        <button class="modal__ok-btn btn">
+            <span class="btn__text">ОК</span>
+        </button>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="js/slick.min.js"></script>

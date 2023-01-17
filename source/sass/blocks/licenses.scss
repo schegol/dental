@@ -1,0 +1,113 @@
+.licenses {
+    position: relative;
+    left: -20px;
+    width: calc(100% + 40px);
+}
+
+.licenses__wrapper {
+    @include dflex(nowrap, row, flex-start, flex-start);
+    @include hide-scrollbar;
+    overflow-x: auto;
+    width: 100%;
+    margin: -35px 0;
+    padding: 35px 20px;
+}
+
+.licenses__item {
+    @include transition(box-shadow);
+    @include dflex(nowrap, column, flex-start, stretch);
+    position: relative;
+    flex-basis: 210px;
+    flex-shrink: 0;
+    height: 130px;
+    border: 1px solid #EEE;
+    box-shadow: $box-shadow;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+    
+    &:active {
+        box-shadow: $box-shadow-hover;
+    }
+}
+
+.licenses__item-img {
+    @include object-fit;
+}
+
+@media (min-width: $tablet-width) {
+    .licenses {
+        left: -30px;
+        width: calc(100% + 60px);
+    }
+
+    .licenses__wrapper {
+        margin: -35px 0;
+        padding: 35px 30px;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .licenses {
+        position: static;
+        width: 100%;
+    }
+
+    .licenses__wrapper {
+        position: relative;
+        left: -15px;
+        width: calc(100% + 30px);
+        margin: 0;
+        padding: 0;
+        overflow: initial;
+    }
+
+    .licenses__item {
+        @include transition;
+        position: relative;
+        top: 0;
+        flex-basis: auto;
+        margin-right: 15px;
+        margin-left: 15px;
+        opacity: 1;
+        visibility: visible;
+
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+
+        &:not(.slick-active) {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &::after {
+            @include abs-center-x;
+            top: auto;
+            bottom: 0;
+            width: 100%;
+            height: 10px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            top: -10px;
+
+            &::after {
+                bottom: -10px;
+            }
+        }
+    }
+
+    .licenses__item-img {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}

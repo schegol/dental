@@ -1,0 +1,105 @@
+.modal {
+    position: fixed;
+    bottom: 100%;
+    left: calc(50% + (17px / 2));
+    width: 320px;
+    padding: 40px 20px 30px;
+    opacity: 0;
+    background-color: #fff;
+    transform: translate(-50%, 0);
+    z-index: 100010;
+    transition: opacity .3s ease-out, bottom .3s ease-out;
+
+    &--open {
+        bottom: 50%;
+        opacity: 1;
+        transform: translate(calc(-50% - (17px / 2)), 50%);
+    }
+
+    &--form-success {
+        padding-top: 140px;
+        background-repeat: no-repeat;
+        background-position: center 40px;
+        background-size: 80px 80px;
+        background-image: url("../img/icon-modal-bg.svg");
+    }
+}
+
+.modal__close {
+    @include dflex(nowrap, row, center, center);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.modal__close path {
+    @include transition(fill);
+    fill: #c1c1c1;
+}
+
+.modal__close:hover path,
+.modal__close:focus path,
+.modal__close:active path {
+    fill: $accent-color-medium;
+}
+
+.modal__heading {
+    position: relative;
+    padding-bottom: 15px;
+    text-align: center;
+
+    &::after {
+        @include abs-center-x;
+        top: auto;
+        bottom: 0;
+        width: 100px;
+        height: 1px;
+        background-image: $gradient-simple;
+    }
+}
+
+.modal__desc {
+    text-align: center;
+}
+
+@media (min-width: $desktop-width) {
+    .modal {
+        width: 500px;
+        padding: 60px 50px;
+
+        &--form-success {
+            padding-top: 225px;
+            background-position: center 60px;
+            background-size: 134px 134px;
+        }
+    }
+
+    .modal__heading {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+
+    .modal__desc {
+        margin-bottom: 27px;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .modal__ok-btn.btn {
+        width: auto;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0 50px;
+      }
+}

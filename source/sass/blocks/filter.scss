@@ -1,0 +1,91 @@
+.filter__list {
+    @include list-reset;
+    @include dflex(wrap, row, flex-start, flex-start);
+    margin-bottom: 20px;
+}
+
+.filter__item {
+    margin-bottom: 10px;
+
+    &:not(:last-child) {
+        margin-right: 10px;
+    }
+}
+
+.filter__btn {
+    @include dflex(nowrap, row, center, center);
+    @include transition(background-color);
+    padding: 7px 10px;
+    background-color: $bg-color;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        background-color: $accent-color-medium;
+    }
+}
+
+.filter__btn-text {
+    @include gradient-text;
+    @include transition(color);
+    text-align: center;
+    color: $accent-color-medium;
+    font-size: 12px;
+    line-height: 22px;
+    text-transform: uppercase;
+}
+
+.filter__btn:active .filter__btn-text {
+    color: transparent;
+}
+
+@media (min-width: $desktop-width) {
+    .filter {
+        margin-bottom: 40px;
+    }
+
+    .filter__item {
+        margin-bottom: 20px;
+    
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+
+    .filter__btn {
+        padding: 13px 30px;
+
+        &:hover,
+        &:focus {
+            background-color: $accent-color-medium;
+        }
+
+        &--selected {
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: $accent-color-medium;
+            }
+        }
+    }
+
+    .filter__btn-text {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .filter__btn:hover .filter__btn-text,
+    .filter__btn:focus .filter__btn-text {
+        color: #fff;
+    }
+
+    .filter__btn:active .filter__btn-text,
+    .filter__btn.filter__btn--selected .filter__btn-text,
+    .filter__btn--selected:hover .filter__btn-text
+    .filter__btn--selected:focus .filter__btn-text
+    .filter__btn--selected:active .filter__btn-text {
+        color: transparent;
+    }
+}

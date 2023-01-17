@@ -21,6 +21,42 @@ const closeMobileMenu = function() {
     submenuToggles.removeClass('header__menu-link--submenu-open');
 }
 
+//модалки:
+let modalTrigger = $('.header__appoint-link'),
+    appointModal = $('.modal--form'),
+    successAppointModal = $('.modal--form-success'),
+    header = $('header');
+
+const openAppointModal = function() {
+    closeMobileMenu();
+    body.addClass('fixed');
+    overlay.addClass('overlay--active');
+    appointModal.addClass('modal--open');
+    header.css('z-index', 100);
+}
+
+const closeAppointModal = function() {
+    body.removeClass('fixed');
+    overlay.removeClass('overlay--active');
+    appointModal.removeClass('modal--open');
+    header.css('z-index', 100001);
+}
+
+const openAppointSuccessModal = function() {
+    closeAppointModal();
+    body.addClass('fixed');
+    overlay.addClass('overlay--active');
+    successAppointModal.addClass('modal--open');
+    header.css('z-index', 100);
+}
+
+const closeAppointSuccessModal = function() {
+    body.removeClass('fixed');
+    overlay.removeClass('overlay--active');
+    successAppointModal.removeClass('modal--open');
+    header.css('z-index', 100001);
+}
+
 //реинит слайдеров по рейсайзу:
 const reinitSliders = function(selector) {
     let sliderItems = selector;
@@ -51,7 +87,9 @@ $(function() {
     });
 
     overlay.on('click', function() {
-        closeMobileMenu();  
+        closeMobileMenu();
+        closeAppointModal();
+        closeAppointSuccessModal();
     });
 
     submenuToggles.on('click', function(e) {
@@ -277,6 +315,144 @@ $(function() {
             });
         }
     }
+
+    //фильтры:
+    let filterBtns = $('.filter__btn');
+
+    if (filterBtns.length) {
+        filterBtns.each(function() {
+            let btn = $(this);
+
+            btn.on('click', function() {
+                let id = btn.data('filter'),
+                    clicked = btn.hasClass('filter__btn--selected'),
+                    sections = body.find('[data-filter-section]'),
+                    relatedSection = sections.filter('[data-filter-section="'+id+'"]');
+    
+                if (clicked) {
+                    sections.show();
+                    btn.removeClass('filter__btn--selected');
+                    btn.blur();
+                } else {
+                    filterBtns.removeClass('filter__btn--selected');
+                    btn.addClass('filter__btn--selected');
+                    sections.hide();
+                    relatedSection.show();
+                }
+            });
+        });
+    }
+
+    //модалки: (УДАЛИТЬ ПРИ НАТЯЖКЕ!!!)
+    modalTrigger.on('click', function(e) {
+        e.preventDefault();
+        
+        openAppointModal();
+    });
+
+    let closeModalBtn = body.find('.modal__close, .modal__ok-btn'),
+        modalFormSubmit = body.find('.modal--form .form__submit');
+    
+    closeModalBtn.on('click', function() {
+        closeAppointModal();
+        closeAppointSuccessModal();
+    });
+
+    modalFormSubmit.on('click', function(e) {
+        e.preventDefault();
+        openAppointSuccessModal();
+    });
+
+    //слайдер с работами:
+    let worksSliderItems = $('.works__item');
+
+    if (worksSliderItems.length) {
+        let slider = worksSliderItems.parent('.works__wrapper');
+
+        slider.slick({
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            prevArrow: slider.closest('.section').find('.slider-arrows__arrow--prev'),
+            nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
+            touchThreshold: 30,
+            responsive: [
+                {
+                    breakpoint: 1499,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: 'unslick'
+                },
+            ]
+        });
+
+        slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            let lastSlideIndex = slick.slideCount - 1;
+
+            if ($(slick.$slides[lastSlideIndex]).hasClass('slick-active') && nextSlide > currentSlide) {
+                return false;
+            }
+        });
+    }
+
+    //слайдер с лицензиями:
+    let licensesSliderItems = $('.licenses__item');
+
+    if (licensesSliderItems.length) {
+        let slider = licensesSliderItems.parent('.licenses__wrapper');
+
+        slider.slick({
+            infinite: false,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            prevArrow: slider.closest('.section').find('.slider-arrows__arrow--prev'),
+            nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
+            touchThreshold: 30,
+            responsive: [
+                {
+                    breakpoint: 1919,
+                    settings: {
+                        slidesToShow: 5,
+                    }
+                },
+                {
+                    breakpoint: 1499,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1023,
+                    settings: 'unslick'
+                },
+            ]
+        });
+
+        slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            let lastSlideIndex = slick.slideCount - 1;
+
+            if ($(slick.$slides[lastSlideIndex]).hasClass('slick-active') && nextSlide > currentSlide) {
+                return false;
+            }
+        });
+    }
+
+    //readmore в segmented-text:
+    let segmentedTexts = $('.segmented-text__item-text');
+
+    if (segmentedTexts.length && $(window).width() < 1024) {
+        segmentedTexts.readmore({
+            speed: 300,
+            collapsedHeight: 208,
+            heightMargin: 10,
+            moreLink: '<a class="segmented-text__expand-btn segmented-text__expand-btn--closed" href="javascipt:;">Читать полностью</a>',
+            lessLink: '<a class="segmented-text__expand-btn segmented-text__expand-btn--open" href="javascipt:;">Свернуть</a>',
+        });
+    }
 });
 
 $(window).on('load resize', function() {
@@ -294,4 +470,23 @@ $(window).on('resize orientationChange', function(event) {
     reinitSliders($('.reviews__item'));
     reinitSliders($('.smiles__item'));
     reinitSliders($('.doctors__item'));
+    reinitSliders($('.works__item'));
+    reinitSliders($('.licenses__item'));
+
+    //readmore:
+    let segmentedTexts = $('.segmented-text__item-text');
+
+    if (segmentedTexts.length) {
+        if ($(window).width() >= 1024) {
+            segmentedTexts.readmore('destroy');
+        } else {
+            segmentedTexts.readmore({
+                speed: 300,
+                collapsedHeight: 208,
+                heightMargin: 10,
+                moreLink: '<a class="segmented-text__expand-btn segmented-text__expand-btn--closed" href="javascipt:;">Читать полностью</a>',
+                lessLink: '<a class="segmented-text__expand-btn segmented-text__expand-btn--open" href="javascipt:;">Свернуть</a>',
+            });
+        }
+    }
 });

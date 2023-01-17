@@ -154,6 +154,7 @@
         margin-right: 15px;
         margin-left: 15px;
         opacity: 1;
+        visibility: visible;
 
         &:not(:last-child) {
             margin-right: 15px;
@@ -180,6 +181,7 @@
 
         &:not(.slick-active) {
             opacity: 0;
+            visibility: hidden;
         }
     }
 

@@ -17,6 +17,10 @@
     }
 }
 
+.section[style*="display: none"] + .section:not([style*="display: none"]) {
+    margin-top: 0;
+}
+
 .section__head {
     @include dflex(nowrap, row, flex-start, center);
     position: relative;

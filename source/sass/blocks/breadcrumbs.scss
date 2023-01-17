@@ -1,0 +1,48 @@
+.breadcrumbs {
+    margin-bottom: 15px;
+}
+
+.breadcrumbs__arrow {
+    @include background("../img/icon-breadcrumbs-arrow.svg");
+    display: inline-flex;
+    width: 18px;
+    height: 9px;
+    margin: 0 10px;
+}
+
+.breadcrumbs__link {
+    @include transition(color);
+    color: $link-color;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:not([href]) {
+        color: $secondary-text-color;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .breadcrumbs {
+        margin-bottom: 40px;
+    }
+
+    .breadcrumbs__link {    
+        font-size: 16px;
+        line-height: 26px;
+
+        &:hover[href],
+        &:focus[href] {
+            color: $footer-hover-color;
+        }
+    
+        &:active[href] {
+            color: $link-color;
+        }
+    }
+    
+    .breadcrumbs__arrow {
+        margin: 0 15px;
+    }
+}
