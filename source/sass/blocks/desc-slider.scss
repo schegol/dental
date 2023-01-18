@@ -1,0 +1,105 @@
+.desc-slider {
+    @include dflex(nowrap, column, flex-start, stretch);
+}
+
+.desc-slider__desc p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 26px;
+    color: $accent-color-dark;
+}
+
+.desc-slider__slider-block {
+    margin-bottom: 30px;
+}
+
+.desc-slider__slider {
+    margin-bottom: 40px;
+
+    &::after {
+        z-index: 1000;
+    }
+}
+
+.desc-slider__slider-item {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: calc((100vw - 40px) / 300 * 240);
+}
+
+.desc-slider__slider-item-img {
+    @include object-fit;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@media (min-width: $tablet-width) {
+    .desc-slider__slider-item {
+        padding-top: calc((100vw - 60px) / 300 * 240);
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .desc-slider {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .desc-slider__slider-block {
+        flex-shrink: 0;
+        flex-basis: 40%;
+        max-width: 40%;
+        margin-bottom: 0;
+        margin-right: 40px;
+        margin-left: 0;
+    }
+
+    .desc-slider__slider {
+        width: 100%;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+
+    .desc-slider__slider-item {
+        flex-basis: auto;
+        padding-top: calc(40% / 300 * 240);
+    }
+
+    .desc-slider__slider-arrows {
+        position: relative;
+        justify-content: flex-end;
+        width: calc(100% - 60px);
+        z-index: 1001;
+    }
+
+    .desc-slider__slider-arrows .slider-arrows__arrow {
+        width: 60px;
+        height: 60px;
+    }
+
+    .desc-slider__desc-block {
+        flex-basis: 690px;
+    }
+
+    .desc-slider__desc p {
+        font-size: 20px;
+        line-height: 35px;
+    }
+}
+
+@media (min-width: $full-hd-width) {
+    .desc-slider__slider-block {
+        position: relative;
+        left: -112px;
+        min-width: 712px;
+        max-width: 712px;
+        margin-right: 8px;
+    }
+
+    .desc-slider__slider-item {
+        padding-top: 570px;
+    }
+}

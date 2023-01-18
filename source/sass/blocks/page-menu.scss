@@ -1,0 +1,98 @@
+.page-menu {
+    position: relative;
+    left: -20px;
+    width: calc(100% + 40px);
+    margin-bottom: 50px;
+}
+
+.page-menu__menu {
+    @include list-reset;
+    @include dflex(nowrap, row, flex-start, stretch);
+    @include hide-scrollbar;
+    padding: 0 20px;
+    overflow-x: auto;
+}
+
+.page-menu__menu-item {
+    width: min-content;
+
+    &:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+
+.page-menu__menu-link {
+    @include transition(color);
+    @include gradient-text;
+    position: relative;
+    display: block;
+    padding-bottom: 18px;
+    font-size: 16px;
+    line-height: 24px;
+    color: $accent-color-medium;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::after {
+        @include abs-center-x;
+        @include transition(opacity);
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        height: 8px;
+        border-top: 1px solid;
+        border-image: $gradient 1;
+        opacity: 0;
+    }
+
+    &:hover:not(.page-menu__menu-link--selected),
+    &:focus:not(.page-menu__menu-link--selected) {
+        color: transparent;
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &--selected {
+        font-weight: 500;
+        color: $accent-color-dark;
+
+        &::after {
+            @include background("../img/icon-selected-item-decoration.svg");
+            bottom: 1px;
+            width: calc(100% + 4px);
+            background-size: 100% 100%;
+            border: 1px solid transparent;
+            opacity: 1;
+        }
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .page-menu {
+        position: static;
+        width: 100%;
+        margin-bottom: 60px;
+    }
+
+    .page-menu__menu {
+        padding: 0;
+        overflow: initial;
+    }
+
+    .page-menu__menu-item {
+        width: auto;
+
+        &:not(:last-child) {
+            margin-right: 50px;
+        }
+    }
+
+    .page-menu__menu-link {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}

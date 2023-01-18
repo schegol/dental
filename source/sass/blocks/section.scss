@@ -26,6 +26,10 @@
     position: relative;
     margin-bottom: 30px;
     padding-top: 15px;
+
+    &--desktop {
+        display: none;
+    }
 }
 
 .section__heading {
@@ -179,6 +183,14 @@
     .section__head {
         margin-bottom: 60px;
         padding-top: 49px;
+
+        &--mobile {
+            display: none;
+        }
+
+        &--desktop {
+            display: flex;
+        }
     }
 
     .section__ghost-heading {

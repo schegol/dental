@@ -213,7 +213,7 @@ $(function() {
             toggle.on('click', function(e) {
                 e.preventDefault();
 
-                if (toggle.hasClass('contacts__menu-link--selected')) {
+                if (toggle.hasClass('page-menu__menu-link--selected')) {
                     return;
                 }
 
@@ -221,8 +221,8 @@ $(function() {
                     contactsBlocks = $('.contacts__item'),
                     contactsBlockToShow = contactsBlocks.filter('[data-id="'+toggleId+'"]');
 
-                contactsToggles.removeClass('contacts__menu-link--selected');
-                toggle.addClass('contacts__menu-link--selected');
+                contactsToggles.removeClass('page-menu__menu-link--selected');
+                toggle.addClass('page-menu__menu-link--selected');
                 contactsBlocks.hide();
                 contactsBlockToShow.show();
             });
@@ -453,6 +453,29 @@ $(function() {
             lessLink: '<a class="segmented-text__expand-btn segmented-text__expand-btn--open" href="javascipt:;">Свернуть</a>',
         });
     }
+
+    //слайдер с описанием:
+    let descSliderItems = $('.desc-slider__slider-item');
+
+    if (descSliderItems.length) {
+        let slider = descSliderItems.parent('.desc-slider__slider');
+
+        slider.slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            touchThreshold: 30,
+            fade: true,
+            speed: 500,
+            cssEase: 'ease-out',
+            draggable: false,
+            swipe: false,
+            swipeToSlide: false,
+            touchMove: false,
+            prevArrow: slider.closest('.section').find('.slider-arrows__arrow--prev'),
+            nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
+        });
+    }
 });
 
 $(window).on('load resize', function() {
@@ -472,6 +495,7 @@ $(window).on('resize orientationChange', function(event) {
     reinitSliders($('.doctors__item'));
     reinitSliders($('.works__item'));
     reinitSliders($('.licenses__item'));
+    reinitSliders($('.desc-slider__slider-item'));
 
     //readmore:
     let segmentedTexts = $('.segmented-text__item-text');

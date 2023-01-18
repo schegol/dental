@@ -1,0 +1,22 @@
+.page-top .page-top__breadcrumbs {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.page-top__heading {
+    text-transform: uppercase;
+}
+
+@media (min-width: $desktop-width) {
+    .page-top .page-top__breadcrumbs {
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+
+    .page-top--banner-zone .page-top__breadcrumbs {
+        position: relative;
+        top: 28px;
+        margin-top: 32px;
+        margin-bottom: 0;
+    }
+}

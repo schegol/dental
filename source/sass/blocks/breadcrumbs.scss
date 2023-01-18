@@ -1,7 +1,3 @@
-.breadcrumbs {
-    margin-bottom: 15px;
-}
-
 .breadcrumbs__arrow {
     @include background("../img/icon-breadcrumbs-arrow.svg");
     display: inline-flex;
@@ -24,10 +20,6 @@
 }
 
 @media (min-width: $desktop-width) {
-    .breadcrumbs {
-        margin-bottom: 40px;
-    }
-
     .breadcrumbs__link {    
         font-size: 16px;
         line-height: 26px;
