@@ -1,0 +1,134 @@
+.service-advantages {
+    position: relative;
+    left: -20px;
+    width: calc(100% + 40px);
+}
+
+.service-advantages__list {
+    @include list-reset;
+    @include dflex(nowrap, row, flex-start, flex-start);
+    @include hide-scrollbar;
+    overflow-x: auto;
+    padding: 0 20px;
+}
+
+.service-advantages__item {
+    @include dflex(nowrap, column, flex-start, stretch);
+    position: relative;
+    flex-basis: 200px;
+    flex-shrink: 0;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+.service-advantages__item-img-block {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: calc(100% / 200 * 348);
+}
+
+.service-advantages__item-img {
+    @include object-fit;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.service-advantages__item-heading {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: block;
+    max-width: calc(100% - 40px);
+    padding: 10px;
+    font-weight: 500;
+    color: $accent-color-dark;
+    background-color: rgba(255,255,255,.8);
+}
+
+@media (min-width: $tablet-width) {
+    .service-advantages {
+        left: -30px;
+        width: calc(100% + 60px);
+    }
+    
+    .service-advantages__list {
+        padding: 0 30px;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .service-advantages {
+        left: -40px;
+        width: calc(100% + 80px);
+    }
+    
+    .service-advantages__list {
+        padding: 0 40px;
+    }
+
+    .service-advantages__item {
+        flex-basis: 280px;
+
+        &:not(:last-child) {
+            margin-right: 30px;
+        }
+    }
+
+    .service-advantages__item-heading {
+        bottom: 30px;
+        left: 30px;
+        max-width: calc(100% - 60px);
+        font-size: 16px;
+        line-height: 26px;
+    }
+}
+
+@media (min-width: $big-desktop-width) {
+    .service-advantages {
+        position: static;
+        width: 100%;
+        margin-top: 80px;
+    }
+
+    .service-advantages__list {
+        position: relative;
+        padding: 0;
+        overflow: initial;
+
+        &::before {
+            @include abs-center;
+            top: calc(50% - 10px);
+            width: calc(100% + 120px);
+            height: 300px;
+            border: 1px solid;
+            border-image: $gradient 1;
+        }
+    }
+
+    .service-advantages__item {
+        @include transition(top);
+        top: 0;
+        flex-basis: calc(20% - 24px);
+
+        &:nth-child(odd) {
+            margin-top: -20px;
+        }
+
+        &:nth-child(even) {
+            margin-top: 20px;
+        }
+
+        &:hover,
+        &:active {
+            top: -10px;
+
+            &::after {
+                bottom: -10px;
+            }
+        }
+    }
+}

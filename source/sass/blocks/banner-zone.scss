@@ -38,6 +38,17 @@
     line-height: 26px;
 }
 
+.banner-zone__btns {
+    @include dflex(nowrap, column, flex-start, stretch);
+    margin-top: 30px;
+}
+
+.banner-zone__btn {
+    &:not(:first-child) {
+        margin-top: 10px;
+    }
+}
+
 @media (min-width: $desktop-width) {
     .banner-zone {
         flex-direction: row;
@@ -74,6 +85,35 @@
         margin-bottom: 0;
         margin-left: 18px;
         padding-top: calc((50% - 18px) / 700 * 450);
+    }
+
+    .banner-zone__btns {
+        align-items: flex-start;
+        margin-top: 50px;
+    }
+
+    .banner-zone__btn {
+        width: auto;
+        padding: 0 50px;
+    }
+
+    .banner-zone__btn .btn__text {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+@media (min-width: $big-desktop-width) {
+    .banner-zone__btns {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .banner-zone__btn {
+        &:not(:first-child) {
+            margin-top: 0;
+            margin-left: 20px;
+        }
     }
 }
 

@@ -476,6 +476,49 @@ $(function() {
             nextArrow: slider.closest('.section').find('.slider-arrows__arrow--next'),
         });
     }
+
+    //переключение compound steps:
+    let compoundStepsToggles = $('.compound-steps__page-menu .page-menu__menu-link');
+
+    if (compoundStepsToggles.length) {
+        compoundStepsToggles.each(function() {
+            let toggle = $(this);
+
+            toggle.on('click', function(e) {
+                e.preventDefault();
+
+                if (toggle.hasClass('page-menu__menu-link--selected')) {
+                    return;
+                }
+
+                let toggleId = toggle.data('id'),
+                    stepBlocks = $('.compound-steps__step'),
+                    stepBlockToShow = stepBlocks.filter('[data-step="'+toggleId+'"]');
+
+                compoundStepsToggles.removeClass('page-menu__menu-link--selected');
+                toggle.addClass('page-menu__menu-link--selected');
+                stepBlocks.hide();
+                stepBlockToShow.show();
+            });
+        });
+    }
+
+    //раскрытие аккордеонов в QNA:
+    let qnaToggles = $('.qna__item-question');
+
+    if (qnaToggles.length) {
+        qnaToggles.each(function() {
+            let toggle = $(this);
+
+            toggle.on('click', function() {
+                let head = toggle.parent('.qna__item-head'),
+                    body = toggle.closest('.qna__item').find('.qna__item-body');
+
+                head.toggleClass('qna__item-head--open');
+                body.slideToggle(300);
+            });
+        });
+    }
 });
 
 $(window).on('load resize', function() {

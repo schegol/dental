@@ -1,0 +1,82 @@
+.service-help__list {
+    @include list-reset;
+    margin-bottom: -15px;
+}
+
+.service-help__item {
+    @include dflex(nowrap, row, flex-start, center);
+    position: relative;
+    min-height: 55px;
+    margin-bottom: 15px;
+    padding-left: 87px;
+    font-size: 16px;
+    line-height: 26px;
+
+    &::before {
+        @include abs-pseudo;
+        @include transition(background-size);
+        top: 0;
+        left: 0;
+        width: 55px;
+        height: 55px;
+        background-image: url("../img/icon-advantages-gradient-circle.svg"), url("../img/icon-service-help-check.svg");
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: 100% 100%, 24px 20px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    &::after {
+        @include abs-pseudo;
+        @include transition;
+        top: 8px;
+        left: 28px;
+        width: 39px;
+        height: 39px;
+        background-color: $bg-color;
+        border-radius: 50%;
+        z-index: -1;
+    }
+}
+
+@media (min-width: $tablet-width) {
+    .service-help__list {
+        @include dflex(wrap, row, flex-start, flex-start);
+        width: calc(100% + 30px);
+    }
+    
+    .service-help__item {
+        flex-basis: calc(50% - 30px);
+        margin-right: 30px;
+
+        &:hover {
+            &::before {
+                background-size: 100% 100%, 18px 16px;
+            }
+
+            &::after {
+                top: 0;
+                left: 0;
+                width: 55px;
+                height: 55px;
+            }
+        }
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .service-help__list {
+        margin-bottom: -30px;
+    }
+    
+    .service-help__item {
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: $big-desktop-width) {   
+    .service-help__item {
+        flex-basis: calc(25% - 30px);
+    }
+}

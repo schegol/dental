@@ -1,0 +1,38 @@
+.small-section__heading {
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: $accent-color-dark;
+}
+
+.small-section__text {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+@media (min-width: $desktop-width) {
+    .small-section {
+        position: relative;
+        padding-left: 90px;
+
+        &::before {
+            @include abs-center-y;
+            width: 1px;
+            height: 100%;
+            background-image: $gradient-vertical;
+        }
+    }
+
+    .small-section__heading {
+        margin-bottom: 30px;
+        font-size: 32px;
+        line-height: 40px;
+    }
+    
+    .small-section__text {
+        max-width: 1078px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+}

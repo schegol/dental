@@ -1,0 +1,108 @@
+.dos-donts__list-wrapper {
+    margin-bottom: 30px;
+}
+
+.dos-donts__list {
+    @include list-reset;
+    @include dflex(nowrap, column, flex-start, flex-start);
+}
+
+.dos-donts__list-item {
+    position: relative;
+    padding-left: 45px;
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    &::before {
+        @include abs-pseudo;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.dos-donts__list-wrapper--do .dos-donts__list-item::before {
+    @include background("../img/icon-dos-donts-check.svg");
+}
+
+.dos-donts__list-wrapper--dont .dos-donts__list-item::before {
+    @include background("../img/icon-dos-donts-cross.svg");
+}
+
+.dos-donts__img-block {
+    position: relative;
+    height: 0;
+    padding-top: calc(100% / 300 * 234);
+}
+
+.dos-donts__img {
+    @include object-fit;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@media (min-width: $desktop-width) {
+    .dos-donts{
+        @include dflex(nowrap, row, space-between, center);
+    }
+
+    .dos-donts__lists-block {
+        @include dflex(nowrap, column, flex-start, flex-start)
+    }
+
+    .dos-donts__list-wrapper {
+        margin-bottom: 0;
+
+        &:not(:last-child) {
+            margin-bottom: 40px;
+        }
+    }
+
+    .dos-donts__list-heading {
+        margin-bottom: 35px;
+    }
+
+    .dos-donts__list-item {
+        &:not(:last-child) {
+            margin-bottom: 22px;
+        }
+    }
+
+    .dos-donts__img-block {
+        flex-basis: 50%;
+        flex-shrink: 0;
+        margin-left: 40px;
+        padding-top: calc(50% / 562 * 438);
+    }
+}
+
+@media (min-width: $full-hd-width) {
+    .dos-donts{
+        align-items: flex-start;
+    }
+
+    .dos-donts__lists-block {
+        flex-direction: row;
+    }
+
+    .dos-donts__list-wrapper {
+        flex-basis: 400px;
+
+        &:not(:last-child) {
+            margin-right: 40px;
+            margin-bottom: 0;
+        }
+    }
+
+    .dos-donts__img-block {
+        position: relative;
+        right: -110px;
+        flex-basis: 562px;
+        margin-left: 10px;
+        padding-top: 438px;
+    }
+}

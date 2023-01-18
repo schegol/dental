@@ -1,0 +1,97 @@
+.qna__item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $accent-color-light;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.qna__item-question {
+    position: relative;
+    width: 100%;
+    min-height: 39px;
+    padding: 0 59px 0 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: left;
+    color: $link-color;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::after {
+        @include abs-pseudo;
+        @include transition(background-position);
+        @include background("../img/icon-qna-arrow.svg");
+        top: 0;
+        right: 0;
+        width: 39px;
+        height: 39px;
+    }
+
+    // &:hover::after {
+    //     background-position: center top 3px;
+    // }
+}
+
+.qna__item-head--open .qna__item-question::after {
+    background-image: url("../img/icon-qna-arrow-open.svg");
+}
+
+// .qna__item-head--open .qna__item-question:hover::after {
+//     background-position: center bottom 3px;
+// }
+
+.qna__item-body {
+    padding-top: 10px;
+}
+
+.qna__item-body p {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+@media (min-width: $desktop-width) {
+    .qna__item {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+    
+    .qna__item-question {
+        font-size: 20px;
+        line-height: 30px;
+        
+        &::after {
+            @include abs-pseudo;
+            @include transition(background-position);
+            @include background("../img/icon-qna-arrow.svg");
+            top: 0;
+            right: 0;
+            width: 39px;
+            height: 39px;
+        }
+    
+        &:hover,
+        &:focus {
+            &::after {
+                background-position: center top 3px;
+            }
+        }
+        
+    }
+    
+    .qna__item-head--open .qna__item-question:hover::after {
+        background-position: center bottom 3px;
+    }
+    
+    .qna__item-body {
+        padding-top: 15px;
+    }
+}

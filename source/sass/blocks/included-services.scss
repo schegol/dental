@@ -1,0 +1,118 @@
+.included-services {
+    @include dflex(nowrap, column, flex-start, stretch);
+}
+
+.included-services__item {
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.included-services__item-img-wrapper {
+    @include dflex(nowrap, row, flex-start, center);
+    margin-bottom: 10px;
+}
+
+.included-services__item-img-block {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.included-services__item-img {
+    @include object-fit;
+}
+
+.included-services__item-name {
+    margin: 0;
+    font-size: 18px;
+    line-height: 28px;
+    color: $accent-color-dark;
+
+    &--desktop {
+        display: none;
+    }
+}
+
+.included-services__item-price {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+
+    &--desktop {
+        display: none;
+    }
+}
+
+.included-services__item-desc {
+    margin-bottom: 0;
+}
+
+@media (min-width: $desktop-width) {
+    .included-services {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        width: calc(100% + 32px);
+        margin-bottom: -32px;
+    }
+    
+    .included-services__item {
+        @include dflex(nowrap, row, flex-start, flex-start);
+        flex-basis: calc(50% - 32px);
+        margin-right: 32px;
+        margin-bottom: 32px;
+
+        &:not(:last-child) {
+            margin-bottom: 32px;
+        }
+    }
+
+    .included-services__item-img-wrapper {
+        margin-right: 40px;
+        margin-bottom: 0;
+    }
+
+    .included-services__item-img-block {
+        width: 100px;
+        height: 100px;
+        margin-right: 0;
+    }
+
+    .included-services__item-img-text {
+        display: none;
+    }
+
+    .included-services__item-name {
+        margin-bottom: 10px;
+        font-size: 20px;
+        line-height: 30px;
+
+        &--desktop {
+            display: block;
+        }
+    }
+
+    .included-services__item-price {
+        font-size: 22px;
+        line-height: 32px;
+
+        &--desktop {
+            display: block;
+        }
+    }
+
+    .included-services__item-desc {
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 26px;
+    }
+}
+
+@media (min-width: $big-desktop-width) {
+    .included-services__item {
+        flex-basis: calc(33.3333% - 32px);
+    }
+}

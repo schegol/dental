@@ -1,0 +1,74 @@
+.steps__list {
+    @include list-reset;
+    @include dflex(nowrap, column, flex-start, stretch);
+    margin-bottom: -10px;
+    counter-reset: steps;
+}
+
+.steps__item {
+    @include dflex(nowrap, row, flex-start, center);
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 10px;
+    padding-left: 70px;
+    font-size: 16px;
+    line-height: 26px;
+
+    &::before {
+        @include abs-center-y;
+        @include background("../img/icon-advantages-gradient-circle.svg");
+        width: 50px;
+        height: 50px;
+        color: transparent;
+        background-color: #fff;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    &::after {
+        @include abs-center-y;
+        @include gradient-text-light;
+        @include dflex(nowrap, row, center, center)
+        content: counter(steps);
+        width: 48px;
+        height: 48px;
+        font-size: 28px;
+        line-height: 34px;
+        color: transparent;       
+        border-radius: 50%;
+        counter-increment: steps;
+        z-index: 2;
+    }
+}
+
+@media (min-width: $tablet-width) {
+    .steps__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: calc(100% + 20px);
+    }
+
+    .steps__item {
+        flex-basis: calc(50% - 20px);
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .steps__list {
+        width: calc(100% + 30px);
+        margin-bottom: -30px;
+    }
+
+    .steps__item {
+        flex-basis: calc(50% - 30px);
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: $big-desktop-width) {
+    .steps__item {
+        flex-basis: calc(25% - 30px);
+    }
+}

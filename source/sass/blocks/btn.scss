@@ -1,6 +1,6 @@
 .btn {
     @include dflex(nowrap, row, center, center);
-    // @include transition;
+    @include transition;
     width: 100%;
     min-height: 50px;
     padding: 0 10px;
@@ -22,6 +22,15 @@
             border-color: $accent-color-medium;
         }
     }
+
+    &--non-target {
+        border: 2px solid $accent-color-medium;
+        background-color: #fff;
+
+        &:active {
+            background-color: $accent-color-medium;
+        }
+    }
 }
 
 .btn__text {
@@ -31,6 +40,10 @@
     letter-spacing: .05em;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+.btn--non-target .btn__text {
+    color: $accent-color-medium;
 }
 
 .btn:active .btn__text {
@@ -63,10 +76,28 @@
                 outline: none;
             }
         }
+
+        &--non-target {
+            &:hover,
+            &:focus {
+                background-color: $accent-color-medium;
+                border-color: $accent-color-medium;
+                outline: none;
+            }
+        }
     }
 
     .btn:hover .btn__text,
     .btn:focus .btn__text {
+        color: transparent;
+    }
+
+    .btn--non-target:hover .btn__text,
+    .btn--non-target:focus .btn__text {
+        color: #fff;
+    }
+
+    .btn--non-target:active .btn__text {
         color: transparent;
     }
 }
